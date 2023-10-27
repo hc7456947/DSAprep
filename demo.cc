@@ -1,29 +1,33 @@
-#include <iostream>
+/* C++ code to generate all possible subarrays/subArrays 
+	Complexity- O(n^3) */
+#include<bits/stdc++.h> 
+using namespace std; 
 
-int main() {
-    int arr[] = {1, 2, 2, 3, 4, 4, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
+// Prints all subarrays in arr[0..n-1] 
+void subArray(int arr[], int n) 
+{ 
+	// Pick starting point 
+	for (int i=0; i <n; i++) 
+	{ 
+		// Pick ending point 
+		for (int j=i; j<n; j++) 
+		{ 
+			// Print subarray between current starting 
+			// and ending points 
+			for (int k=i; k<=j; k++) 
+				cout << arr[k] << " "; 
 
-    // Loop through the array to find and remove duplicates
-    for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < n; ) {
-            if (arr[i] == arr[j]) {
-                // Remove the duplicate element by shifting all elements left
-                for (int k = j; k < n - 1; ++k) {
-                    arr[k] = arr[k + 1];
-                }
-                n--;  // Decrease the size of the array
-            } else {
-                j++;  // Move to the next element
-            }
-        }
-    }
+			cout << endl; 
+		} 
+	} 
+} 
 
-    // Print the resulting array with no duplicates
-    for (int i = 0; i < n; ++i) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-
-    return 0;
-}
+// Driver program 
+int main() 
+{ 
+	int arr[] = {1, 2, 3, 4}; 
+	int n = sizeof(arr)/sizeof(arr[0]); 
+	cout << "All Non-empty Subarrays\n"; 
+	subArray(arr, n); 
+	return 0; 
+} 
